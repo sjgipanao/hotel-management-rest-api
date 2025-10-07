@@ -9,15 +9,25 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+
     public function up(): void
-    {
-        Schema::table('users', function (Blueprint $table) {
+{
+    Schema::table('users', function (Blueprint $table) {
+        if (!Schema::hasColumn('users', 'username')) {
             $table->string('username')->unique();
+        }
+        if (!Schema::hasColumn('users', 'mobile_number')) {
             $table->string('mobile_number')->nullable();
-            $table->string('address');
+        }
+        if (!Schema::hasColumn('users', 'address')) {
+            $table->string('address')->nullable();
+        }
+        if (!Schema::hasColumn('users', 'user_type')) {
             $table->string('user_type')->default('customer');
-        });
-    }
+        }
+    });
+}
+
 
     /**
      * Reverse the migrations.

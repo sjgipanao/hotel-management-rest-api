@@ -138,6 +138,4 @@ class RoomController extends Controller
         ], 200);
     }
 
-    public function toggleRoomStatus($id) {
-}
 }

@@ -31,7 +31,7 @@ class UserFactory extends Factory
             'mobile_number' => $this->faker->phoneNumber(),
             'address'       => $this->faker->address(),
             'user_type'     => 'customer',
-            'password'      => Hash::make('password'),
+            'password'      => 'password',
             'email_verified_at' => now(),
         ];
     }

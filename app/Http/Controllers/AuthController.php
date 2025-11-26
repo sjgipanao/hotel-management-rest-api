@@ -20,7 +20,7 @@ class AuthController extends Controller
             'mobile_number' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:500',
             'user_type' => 'nullable|string|in:admin,customer',
-            'password' => 'required|string|min:8|confirmed',
+            'password' => 'required|string|min:8|',
         ]);
 
         $user = User::create([

@@ -17,6 +17,9 @@ class AuthController extends Controller
             'last_name' => 'required|string|max:255',
             'username' => 'required|string|max:255|unique:users',
             'email' => 'required|string|email|max:255|unique:users',
+            'mobile_number' => 'nullable|string|max:20',
+            'address' => 'nullable|string|max:500',
+            'user_type' => 'nullable|string|in:admin,customer',
             'password' => 'required|string|min:8|confirmed',
         ]);
 
@@ -25,6 +28,9 @@ class AuthController extends Controller
             'last_name' => $validated['last_name'],
             'username' => $validated['username'],
             'email' => $validated['email'],
+            'mobile_number' => $validated['mobile_number'] ?? null,
+            'address' => $validated['address'] ?? null,
+            'user_type' => $validated['user_type'] ?? 'customer',
             'password' => Hash::make($validated['password']),
         ]);
 

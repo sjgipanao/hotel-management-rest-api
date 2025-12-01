@@ -20,7 +20,7 @@ class AuthController extends Controller
             'mobile_number' => 'nullable|string|max:20',
             'address' => 'nullable|string|max:500',
             'user_type' => 'nullable|string|in:admin,customer',
-            'password' => 'required|string|min:8|',
+            'password' => 'required|string|min:8|confirmed',
         ]);
 
         $user = User::create([
@@ -66,4 +66,22 @@ class AuthController extends Controller
             'token_type' => 'Bearer'], 
             200);
     }
+
+    public function logout(Request $request)
+{
+    // Check if the user is authenticated
+    if (!$request->user()) {
+        return response()->json([
+            'message' => 'No authenticated user found'
+        ], 401);
+    }
+
+    // Delete only the current access token
+    $request->user()->currentAccessToken()->delete();
+
+    return response()->json([
+        'message' => 'Logged out successfully'
+    ], 200);
+}
+
 }

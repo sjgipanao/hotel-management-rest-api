@@ -84,4 +84,12 @@ class AuthController extends Controller
     ], 200);
 }
 
+public function profile(Request $request)
+{
+    return response()->json([
+        'user' => $request->user()
+    ], 200);
+}
+
+
 }

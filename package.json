@@ -1,10 +1,13 @@
+
+
 {
     "$schema": "https://json.schemastore.org/package.json",
     "private": true,
     "type": "module",
     "scripts": {
+        "dev": "vite",
         "build": "vite build",
-        "dev": "vite"
+        "start": "vite preview"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",
